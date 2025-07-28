@@ -2,7 +2,7 @@
   "name": "route-optimizer-api",
   "version": "1.0.0",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
     "dev": "tsx server.ts"
   },
@@ -12,7 +12,9 @@
   "description": "",
   "dependencies": {
     "@types/node": "^24.1.0",
+    "cors": "^2.8.5",
     "express": "^5.1.0",
+    "express-validator": "^7.2.1",
     "mongoose": "^8.16.5",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3"
