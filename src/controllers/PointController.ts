@@ -24,3 +24,16 @@ export const createSetOfPoints = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Erro no servidor', error })
   }
 }
+
+//GET /:id
+export const getSetOfPoints = async (req: Request, res: Response) => {
+  try {
+    const set = await SetOfPoints.findById(req.params.id)
+    if(!set) {
+      return res.status(404).json({ message: 'Os pontos não foram encontrados' })
+    }
+    res.status(200).json(set)
+  } catch (error) {
+    res.status(500).json({ messgae: 'Erro no servidor', error })
+  }
+}
