@@ -6,7 +6,7 @@ export interface IPoint extends Document {
   y: number,
 }
 
-const PointSchema = new Schema<IPoint>({
+export const PointSchema = new Schema<IPoint>({
   name: { type: String, required: true, unique: true },
   x: { type: Number, required: true, unique: true },
   y: { type: Number, required: true, unique: true },
@@ -20,4 +20,4 @@ const SetOfPointsSchema = new Schema<ISetOfPoints>({
   points: [PointSchema]
 }, { timestamps: true })
 
-export const SetOfPoints = model<ISetOfPoints>('ConjuntodePontos', SetOfPointsSchema)
+export const SetOfPoints = model<ISetOfPoints>('ConjuntoDePontos', SetOfPointsSchema)
