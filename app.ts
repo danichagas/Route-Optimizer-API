@@ -15,4 +15,7 @@ app.get('/', (req: Request, res: Response) => {
   res.send('Funcionou')
 })
 
+app.use('/api/points', pointRoutes)
+app.use('/api/routes', routeRoutes)
+
 export default app
