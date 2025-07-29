@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import { validationResult } from 'express-validator'
-import { SetOfPoints, type IPoint } from '../models/Point.js'
+import { SetOfPoints } from '../models/Point.js'
 
 //POST
 export const createSetOfPoints = async (req: Request, res: Response) => {
