@@ -17,7 +17,7 @@ export const createSetOfPoints = async (req: Request, res: Response) => {
     await newSet.save()
 
     res.status(201).json({
-      message: 'Os pontos cadastrados foram cadastrados com sucesso!',
+      message: 'Os pontos foram cadastrados com sucesso!',
       set: newSet
     })
   } catch(error) {
