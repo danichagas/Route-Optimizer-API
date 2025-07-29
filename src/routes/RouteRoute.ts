@@ -3,8 +3,8 @@ import { getOptimizerRoute, getHistoricRoute, deleteRoute } from '../controllers
 
 const router = Router()
 
-router.get('/:id', getOptimizerRoute)
 router.get('/historic', getHistoricRoute)
+router.get('/:id', getOptimizerRoute)
 router.delete('/:id', deleteRoute)
 
 export default router
