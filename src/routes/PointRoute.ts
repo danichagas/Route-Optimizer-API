@@ -11,3 +11,13 @@ const pointValidationRules = [
   body('points.*.y').isNumeric().withMessage('A coordenada "y" deve ser um número!')
 ]
 
+router.post('/', pointValidationRules, createSetOfPoints)
+router.get('/:id', getSetOfPoints)
+router.patch('/:id', [
+  body('points').isArray({ min: 1 }),
+  body('points.*.name').notEmpty(),
+  body('points.*.x').isNumeric(),
+  body('points.*.y').isNumeric()
+], updateSetOfPoints)
+
+export default router
