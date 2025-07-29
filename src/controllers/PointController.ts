@@ -18,7 +18,7 @@ export const createSetOfPoints = async (req: Request, res: Response) => {
 
     res.status(201).json({
       message: 'Os pontos cadastrados foram cadastrados com sucesso!',
-      id: newSet._id
+      set: newSet
     })
   } catch(error) {
     res.status(500).json({ message: 'Erro no servidor', error })
@@ -55,11 +55,13 @@ export const updateSetOfPoints = async (req: Request, res: Response) => {
     const pointsToUpdate = req.body.points
     
     for (const updatedPoint of pointsToUpdate) {
-      const existingPointIndex = set.points.findIndex(p => p.name === updatedPoint.name)
+      if (updatedPoint._id) {
+        const existingPoint = set.points.find(p => p.id.equals(updatedPoint._id))
 
-      if (existingPointIndex !== -1) {
-        set.points[existingPointIndex].x = updatedPoint.x
-        set.points[existingPointIndex].y = updatedPoint.y
+        if (existingPoint) {
+          existingPoint.x = updatedPoint.x
+          existingPoint.y = updatedPoint.y
+        }
       } else {
         set.points.push(updatedPoint)
       }

@@ -1,13 +1,11 @@
 import { Schema, model, Document } from 'mongoose'
 
 export interface IPoint extends Document {
-  name: String,
   x: number,
   y: number,
 }
 
 export const PointSchema = new Schema<IPoint>({
-  name: { type: String, required: true, unique: true },
   x: { type: Number, required: true, unique: true },
   y: { type: Number, required: true, unique: true },
 })

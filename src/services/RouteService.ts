@@ -42,8 +42,10 @@ export const calculateOptimizedRoute = (points: IPoint[]): { route: IPoint[], to
       currentPoint = neighbor
       optimizeRoute.push(currentPoint)
 
-      const index = unvisitedPoints.findIndex(p => p.name === neighbor.name)
-      unvisitedPoints.splice(index, 1)
+      const index = unvisitedPoints.findIndex(p => p.id.equals(neighbor._id))
+      if (index > -1) {
+        unvisitedPoints.splice(index, 1)
+      }
     }
   }
 
