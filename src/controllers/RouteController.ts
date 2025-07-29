@@ -30,3 +30,24 @@ export const getOptimizerRoute = async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Erro no servidor', error })
   }
 }
+
+//GET/historico
+export const getHistoricRoute = async (req: Request, res: Response) => {
+  try {
+    const historic = await Route.find()
+    .populate('conjuntoDePontosId', 'id createdAt')
+    .sort({ createdAt: -1 })
+
+    const response = historic.map(route => ({
+      routeId: route._id,
+      setOfPointsId: route.setOfPointsId,
+      totalDistance: route.totalDistance,
+    }))
+
+    res.status(200).json(response)
+  } catch (error) {
+    res.status(500).json({ message: 'Erro no servidor', error })
+  }
+}
+
+//DELETE /:id
