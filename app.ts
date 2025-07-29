@@ -2,6 +2,9 @@ import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import connectDB from './src/config/db.js'
 
+import pointRoutes from './src/routes/PointRoute.js'
+import routeRoutes from './src/routes/RouteRoute.js'
+
 const app: Application = express()
 connectDB()
 
