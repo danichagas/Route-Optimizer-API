@@ -51,3 +51,16 @@ export const getHistoricRoute = async (req: Request, res: Response) => {
 }
 
 //DELETE /:id
+export const deleteRoute = async (req: Request, res: Response) => {
+  try {
+    const route = await Route.findByIdAndDelete(req.params.id)
+
+    if (!route) {
+      return res.status(404).json({ message: 'A rota não foi encontrada' })
+    }
+
+    res.status(204).send()
+  } catch (error) {
+    res.status(500).json({ message: 'Erro no servidor', error })
+  }
+}
