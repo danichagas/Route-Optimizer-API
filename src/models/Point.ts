@@ -1,6 +1,7 @@
-import { Schema, model, Document } from 'mongoose'
+import { Schema, model, Document, type Types } from 'mongoose'
 
 export interface IPoint extends Document {
+  _id: Types.ObjectId,
   x: number,
   y: number,
 }
