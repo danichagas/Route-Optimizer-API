@@ -1,0 +1,162 @@
+{
+	"info": {
+		"_postman_id": "f372cf8d-d6ae-4700-87a4-91036880b89b",
+		"name": "Route Optimizer API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36153953"
+	},
+	"item": [
+		{
+			"name": "Points",
+			"item": [
+				{
+					"name": "Create points",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"points\": [\r\n        { \"x\": 0, \"y\": 0 },\r\n        { \"x\": 10, \"y\": 5 },\r\n        { \"x\": -5, \"y\": 8 }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/points",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"points"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get points",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/points/688a3176633561392106984d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"points",
+								"688a3176633561392106984d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update points",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"points\": [\r\n        {\r\n            \"_id\": \"688a3176633561392106984e\",\r\n            \"x\": 2,\r\n            \"y\": 4\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/points/688a3176633561392106984d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"points",
+								"688a3176633561392106984d"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Routes",
+			"item": [
+				{
+					"name": "Get optimizer route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/routes/688a3176633561392106984d",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"routes",
+								"688a3176633561392106984d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get historic route",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/api/routes/historic",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"api",
+								"routes",
+								"historic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete route",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3333/api/routes/688a32e8633561392106985f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3333",
+							"path": [
+								"api",
+								"routes",
+								"688a32e8633561392106985f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3333",
+			"type": "default"
+		}
+	]
+}
