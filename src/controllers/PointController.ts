@@ -56,7 +56,7 @@ export const updateSetOfPoints = async (req: Request, res: Response) => {
     
     for (const updatedPoint of pointsToUpdate) {
       if (updatedPoint._id) {
-        const existingPoint = set.points.find(p => p.id.equals(updatedPoint._id))
+        const existingPoint = set.points.find(p => p._id.equals(updatedPoint._id))
 
         if (existingPoint) {
           existingPoint.x = updatedPoint.x
