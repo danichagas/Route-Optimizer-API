@@ -13,7 +13,7 @@ export interface IRoute extends Document {
 const RouteSchema = new Schema<IRoute>({
   pointSetId: {
     type: Schema.Types.ObjectId,
-    ref: 'pointSetId',
+    ref: 'PointSet',
     required: true,
   },
   routeOptimizer: [PointSchema],

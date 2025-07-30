@@ -5,6 +5,9 @@ import connectDB from './src/config/db.js'
 import pointRoutes from './src/routes/PointRoute.js'
 import routeRoutes from './src/routes/RouteRoute.js'
 
+import './src/models/Point.js'
+import './src/models/Route.js'
+
 const app: Application = express()
 connectDB()
 

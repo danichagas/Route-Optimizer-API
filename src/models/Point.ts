@@ -15,8 +15,8 @@ export interface ISetOfPoints extends Document {
   points: IPoint[],
 }
 
-const SetOfPointsSchema = new Schema<ISetOfPoints>({
+const PointSetSchema = new Schema<ISetOfPoints>({
   points: [PointSchema]
 }, { timestamps: true })
 
-export const SetOfPoints = model<ISetOfPoints>('ConjuntoDePontos', SetOfPointsSchema)
+export const SetOfPoints = model<ISetOfPoints>('PointSet', PointSetSchema)
