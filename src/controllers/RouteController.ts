@@ -35,17 +35,18 @@ export const getOptimizerRoute = async (req: Request, res: Response) => {
 export const getHistoricRoute = async (req: Request, res: Response) => {
   try {
     const historic = await Route.find()
-    .populate('conjuntoDePontosId', 'id createdAt')
+    .populate('pointSetId')
     .sort({ createdAt: -1 })
 
     const response = historic.map(route => ({
       routeId: route._id,
-      setOfPointsId: route.setOfPointsId,
+      setOfPointsId: route.pointSetId,
       totalDistance: route.totalDistance,
-    }))
+    })).filter(item => item !== null)
 
     res.status(200).json(response)
   } catch (error) {
+    console.log(error)
     res.status(500).json({ message: 'Erro no servidor', error })
   }
 }
