@@ -14,16 +14,18 @@ export const getOptimizerRoute = async (req: Request, res: Response) => {
 
     const { route, totalDistance } = calculateOptimizedRoute(set.points)
 
-    const newRoute = new Route({
-      setOfPointsId: set._id,
+    const newRoute = await new Route({
+      pointSetId: set._id,
       routeOptimizer: route,
       totalDistance,
     })
     await newRoute.save()
 
     res.status(200).json({
-      optimizerRoute: route,
-      totalDistance,
+      optimizerRoute: newRoute.routeOptimizer,
+      pointSetId: newRoute.pointSetId,
+      calculatioDate: newRoute.createdAt,
+      totalDistance: newRoute.totalDistance,
       calculatedRouteId: newRoute._id,
     })
   } catch (error) {
