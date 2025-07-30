@@ -24,7 +24,7 @@ export const getOptimizerRoute = async (req: Request, res: Response) => {
     res.status(200).json({
       optimizerRoute: newRoute.routeOptimizer,
       pointSetId: newRoute.pointSetId,
-      calculatioDate: newRoute.createdAt,
+      calculationDate: newRoute.createdAt,
       totalDistance: newRoute.totalDistance,
       calculatedRouteId: newRoute._id,
     })
