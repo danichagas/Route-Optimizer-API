@@ -4,6 +4,8 @@ import { Types, Document } from 'mongoose'
 @Schema()
 export class Point extends Document {
 
+    declare _id: Types.ObjectId;
+
     @Prop({ required: true })
     x: number
 
