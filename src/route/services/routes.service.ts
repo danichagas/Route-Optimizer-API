@@ -38,4 +38,43 @@ export class RoutesService {
         }
         return nearestNeighbor
     }
+
+    private calculateOptimizeRoute(
+        points: Point[],
+    ): { route: Point[]; totalDistance: number } {
+        if(!points || points.length === 0) {
+            return { route: [], totalDistance: 0 }
+        }
+
+        const unvisitedPoints = [...points]
+        const startPoint = unvisitedPoints.shift()
+
+        if(!startPoint) {
+            return { route: [], totalDistance: 0 }
+        }
+
+        const optimizedRoute: Point[] = [startPoint]
+        let currentPoint = startPoint
+        let totalDistance = 0
+
+        while (unvisitedPoints.length > 0) {
+            const neighbor = this.findNearestNeighbor(currentPoint, unvisitedPoints)
+
+            if(neighbor) {
+                totalDistance += this.calculateDistance(currentPoint, neighbor)
+                currentPoint = neighbor
+                optimizedRoute.push(currentPoint)
+
+                const index = unvisitedPoints.findIndex(p => p._id.equals(neighbor._id))
+                if(index > -1) {
+                    unvisitedPoints.splice(index, 1)
+                } else {
+                    break
+                }
+            }
+        }
+        return { route: optimizedRoute, totalDistance }
+    }
+
+    
 }
