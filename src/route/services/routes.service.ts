@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common'
+import { Injectable, NotFoundException } from '@nestjs/common'
 import { InjectModel } from '@nestjs/mongoose'
 import { Model } from 'mongoose'
 import { Route } from '../schemas/route.schema'
@@ -76,5 +76,35 @@ export class RoutesService {
         return { route: optimizedRoute, totalDistance }
     }
 
-    
+    async calculateAndSaveOptimizedRoute(pointSetId: string): Promise<Route> {
+        const setOfPoints = await this.pointService.findOne(pointSetId)
+
+        const { route, totalDistance } = this.calculateOptimizeRoute(
+            setOfPoints.points
+        )
+
+        const newRoute = new this.routeModel({
+            pointSetId: setOfPoints._id,
+            routeOptimizer: route,
+            totalDistance,
+        })
+
+        return newRoute.save()
+    }
+
+    async getHistoricRoutes(): Promise<Route[]> {
+        return this.routeModel
+            .find()
+            .populate('pointSetId', 'points')
+            .sort({ createdAt: -1 })
+            .exec()
+    }
+
+    async deleteRoute(id: string): Promise<void> {
+        const result = await this.routeModel.findByIdAndDelete(id).exec()
+
+        if(!result) {
+            throw new NotFoundException(`Rota com ID: "${id}" não encontrada`)
+        }
+    }
 }
