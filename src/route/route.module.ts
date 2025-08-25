@@ -1,4 +1,15 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
+import { PointsModule } from 'src/points/points.module'
+import { Route, RouteSchema } from './schemas/route.schema'
+import { RoutesService } from './services/routes.service'
 
-@Module({})
+
+@Module({
+    imports: [
+        PointsModule,
+        MongooseModule.forFeature([{ name: Route.name, schema: RouteSchema }]),
+    ],
+    providers: [RoutesService],
+})
 export class RouteModule {}
