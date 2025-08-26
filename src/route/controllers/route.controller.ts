@@ -32,5 +32,18 @@ export class RouteController {
         }
     }
 
+    @Get('historic/all')
+    @UseGuards(AuthGuard)
+    async getHistoricRoutes() {
+        const historicRoutes = await this.routeService.getHistoricRoutes()
 
+        const response = historicRoutes.map(route => ({
+            routeId: route._id,
+            setOfPointsId: route.pointSetid,
+            totalDistance: route.totalDistance,
+            calculationDate: route.createdAt,
+        }))
+
+        return response
+    }
 }
