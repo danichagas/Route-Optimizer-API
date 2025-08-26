@@ -12,6 +12,9 @@ export class Route extends Document {
 
     @Prop({ required: true })
     totalDistance: number
+
+    declare createdAt: Date
+    declare updateAt: Date
 }
 
 export const RouteSchema = SchemaFactory.createForClass(Route)
