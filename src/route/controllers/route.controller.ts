@@ -25,7 +25,7 @@ export class RouteController {
         return {
             message: 'Rota otimizada calculada e salva com sucesso!',
             calculatedRouteId: newRoute._id,
-            pointSetId: newRoute.pointSetid,
+            pointSetId: newRoute.pointSetId,
             optimizedRoute: newRoute.routeOptimizer,
             totalDistance: newRoute.totalDistance,
             calculationDate: newRoute.createdAt,
@@ -39,11 +39,18 @@ export class RouteController {
 
         const response = historicRoutes.map(route => ({
             routeId: route._id,
-            setOfPointsId: route.pointSetid,
+            setOfPointsId: route.pointSetId,
             totalDistance: route.totalDistance,
             calculationDate: route.createdAt,
         }))
 
         return response
+    }
+
+    @Delete(':id')
+    @UseGuards(AuthGuard)
+    @HttpCode(HttpStatus.NO_CONTENT)
+    async deleteRoute(@Param('id') id:string) {
+        await this.routeService.deleteRoute(id)
     }
 }
