@@ -29,4 +29,18 @@ export class PointsController {
             id: newSet._id
         }
     }
+
+    @Get(':id')
+    findOne(@Param('id') id: string) {
+        return this.pointsService.findOne(id)
+    }
+
+    @Patch(':id')
+    @UseGuards(AuthGuard)
+    updateSetPoints(
+        @Param('id') id: string,
+        @Body() updateSetOfPointsDto: UpdateSetOfPointsDto,
+    ) {
+        return this.pointsService.update(id, updateSetOfPointsDto)
+    }
 }
