@@ -12,7 +12,7 @@ import { APP_GUARD } from '@nestjs/core'
     MongooseModule.forRoot('mongodb+srv://chagas:dani@routeoptimizer.nttzkbn.mongodb.net/?retryWrites=true&w=majority&appName=RouteOptimizer'),
     ThrottlerModule.forRoot([{
       ttl: 60000,
-      limit: 30,
+      limit: 15,
     }]),
     PointsModule,
     RouteModule
