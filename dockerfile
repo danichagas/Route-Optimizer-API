@@ -1,4 +1,4 @@
-FROM node:20-apline AS builder
+FROM node:20-alpine AS builder
 
 WORKDIR /usr/src/app
 
@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN npm run builder
+RUN npm run build
 
 FROM node:20-alpine
 
