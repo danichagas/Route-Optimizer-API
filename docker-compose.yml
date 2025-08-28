@@ -3,7 +3,7 @@ version: '3.8'
 services:
   api:
     build: .
-    container_name: route-optimezer-api
+    container_name: route-optimizer-api
     ports:
       - "3000:3000"
     environment:
@@ -13,7 +13,7 @@ services:
 
   mongo:
     image: mongo:latest
-    container_name: mongodb-route-optimezer
+    container_name: mongodb-route-optimizer
     ports:
       - "27017:27017"
     volumes:
