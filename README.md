@@ -22,7 +22,7 @@
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Aplication running command:
-npm tun start
+npm run start
 
 ## Docker command:
 docker-compose up
